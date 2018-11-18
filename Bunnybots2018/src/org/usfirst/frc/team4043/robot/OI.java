@@ -7,12 +7,14 @@
 
 package org.usfirst.frc.team4043.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//yee, and I cannot stress this enough, haw
+	// yee, and I cannot stress this enough, haw
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -40,4 +42,15 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	public static Joystick driveStick = new Joystick(3);
+	public static Joystick coStick = new Joystick(5);
+
+	public Joystick getDriveStick() {
+		return driveStick;
+	}
+
+	public Joystick getCoStick() {
+		return coStick;
+	}
+
 }

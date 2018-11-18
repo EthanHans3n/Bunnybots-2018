@@ -112,7 +112,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		System.out.println("Alicia 4 president 2020");
+		System.out.println(-OI.driveStick.getRawAxis(1));
+		RobotMap.useless.set(-OI.driveStick.getRawAxis(1));
 		
 	}
 

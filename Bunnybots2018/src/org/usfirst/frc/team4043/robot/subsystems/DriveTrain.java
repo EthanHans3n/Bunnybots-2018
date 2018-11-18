@@ -3,6 +3,7 @@ package org.usfirst.frc.team4043.robot.subsystems;
 import org.usfirst.frc.team4043.robot.Robot;
 import org.usfirst.frc.team4043.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -32,12 +33,10 @@ public class DriveTrain extends Subsystem {
 	
 	}
 	public void drive(double left, double right) {
-	if (Robot.driveType) {
-	drive.arcadeDrive(left, right);
-	} else { //ahHHHHHHHHHHHHHHHHHHHHHHHHh
-	}
-	}
-		
+//	if (Robot.driveType) {
+//	drive.arcadeDrive(left, right);
+//	} else { 
+//	}
 	}
 	
     public void initDefaultCommand() {
@@ -46,6 +45,10 @@ public class DriveTrain extends Subsystem {
     }
 
 	public void drive(int i, int j) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void drive(Joystick driveStick) {
 		// TODO Auto-generated method stub
 		
 	}
