@@ -27,11 +27,11 @@ import org.usfirst.frc.team4043.robot.subsystems.Intake;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
-	public static OI m_oi;
 	public static DriveTrain driveTrain = new DriveTrain(); 
 	public static Intake intake = new Intake(); 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	public static OI m_oi;
 
 	/**
 	 * This function is run when the robot is first started up and should be
