@@ -11,20 +11,16 @@ public class Sorter extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	public void yeet() {
-		RobotMap.yeet.set(1);
-	}
-	public void actualYeet() {
-		RobotMap.actualYeet.set(1);
+
+	public void actSualYeet() {
+		RobotMap.yeetR.set(1);
 	}
 
 	public void actualUnYeet() {
-		RobotMap.actualUnYeet.set(-1);
+		RobotMap.yeetL.set(-1);
 	}
 	public void noYeet() {
-		RobotMap.yeet.set(0);
-		RobotMap.actualYeet.set(0);
-		RobotMap.actualUnYeet.set(0);
+		RobotMap.yeetR.set(0);
 	}
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
