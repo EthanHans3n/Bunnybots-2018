@@ -19,6 +19,7 @@ public class Sorter extends Subsystem {
 	public void actualUnYeet() {
 		RobotMap.yeetL.set(-1);
 	}
+	
 	public void noYeet() {
 		RobotMap.yeetR.set(0);
 	}

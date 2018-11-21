@@ -16,15 +16,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
 	public static WPI_TalonSRX motorFR = new WPI_TalonSRX(9);
 	public static WPI_TalonSRX motorBR = new WPI_TalonSRX(6);
 	public static  WPI_TalonSRX motorFL = new WPI_TalonSRX(7);
@@ -32,8 +23,6 @@ public class RobotMap {
 	public static WPI_TalonSRX useless = new WPI_TalonSRX(16);
 	
 	public static WPI_TalonSRX constantIntake = new WPI_TalonSRX(56);
-	public static WPI_TalonSRX intakeR = new WPI_TalonSRX(99);
-	public static WPI_TalonSRX intakeL = new WPI_TalonSRX(89);
 	public static WPI_TalonSRX yeetR = new WPI_TalonSRX(79);
 	public static WPI_TalonSRX yeetL = new WPI_TalonSRX(69);
 	

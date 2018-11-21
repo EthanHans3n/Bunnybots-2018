@@ -20,8 +20,6 @@ public class Intake extends Subsystem {
 
 	}
 	public void stopAll () {
-		RobotMap.intakeL.set(0);
-		RobotMap.intakeR.set(0);
 		RobotMap.constantIntake.set(0);
 	}
 

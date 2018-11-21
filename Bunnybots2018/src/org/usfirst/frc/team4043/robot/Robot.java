@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4043.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4043.robot.subsystems.Intake;
 import org.usfirst.frc.team4043.robot.subsystems.Sorter;
 
@@ -26,7 +25,6 @@ import org.usfirst.frc.team4043.robot.subsystems.Sorter;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static DriveTrain driveTrain = new DriveTrain(); 
 	public static Intake intake = new Intake(); 
 	public static Sorter Sorter = new Sorter ();
