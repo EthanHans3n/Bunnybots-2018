@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4043.robot.commands;
 
-import org.usfirst.frc.team4043.robot.subsystems.Intake;
+import org.usfirst.frc.team4043.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,31 +9,33 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class IntakeUp extends Command {
 
-    public IntakeUp() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires()
-    }
+	public IntakeUp() {
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		requires (Robot.intake);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		Robot.intake.intakeUp();	
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.intake.stopAll();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }
