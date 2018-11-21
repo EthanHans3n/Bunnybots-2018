@@ -27,9 +27,11 @@ import org.usfirst.frc.team4043.robot.subsystems.Intake;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
-	public static OI m_oi;
 	public static DriveTrain driveTrain = new DriveTrain(); 
 	public static Intake intake = new Intake(); 
+	
+	
+	public static OI m_oi; 	//This MUST be declared last
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -39,9 +41,10 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
 		driveTrain = new DriveTrain();
 		intake = new Intake(); 
+		
+		m_oi = new OI();	//This MUST be declared last
 		
 	}
 
