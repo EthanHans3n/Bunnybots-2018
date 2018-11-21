@@ -34,6 +34,9 @@ public class RobotMap {
 	public static WPI_TalonSRX constantIntake = new WPI_TalonSRX(56);
 	public static WPI_TalonSRX intakeR = new WPI_TalonSRX(99);
 	public static WPI_TalonSRX intakeL = new WPI_TalonSRX(89);
+	public static WPI_TalonSRX actualYeet = new WPI_TalonSRX(79);
+	public static WPI_TalonSRX actualUnYeet = new WPI_TalonSRX(69);
+	public static WPI_TalonSRX yeet = new WPI_TalonSRX(59);
+
 	
-	
-}
+}	

@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4043.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4043.robot.subsystems.Intake;
+import org.usfirst.frc.team4043.robot.subsystems.Sorter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,11 +26,10 @@ import org.usfirst.frc.team4043.robot.subsystems.Intake;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static DriveTrain driveTrain = new DriveTrain(); 
 	public static Intake intake = new Intake(); 
-	
+	public static Sorter Sorter = new Sorter ();
 	
 	public static OI m_oi; 	//This MUST be declared last
 	Command m_autonomousCommand;

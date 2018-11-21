@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4043.robot.subsystems;
 
-import org.usfirst.frc.team4043.robot.Robot;
 import org.usfirst.frc.team4043.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Joystick;
