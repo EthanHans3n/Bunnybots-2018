@@ -11,7 +11,7 @@ public class actualUnYeet extends Command {
     public actualUnYeet() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Sorter);
+    	requires(Robot.sorter);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +20,7 @@ public class actualUnYeet extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Sorter.actualUnYeet();
+    	Robot.sorter.actualUnYeet();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +30,7 @@ public class actualUnYeet extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.Sorter.noYeet();
+    	Robot.sorter.noYeet();
     }
 
     // Called when another command which requires one or more of the same

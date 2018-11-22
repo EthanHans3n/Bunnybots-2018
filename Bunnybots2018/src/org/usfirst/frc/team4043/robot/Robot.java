@@ -25,9 +25,11 @@ import org.usfirst.frc.team4043.robot.subsystems.Sorter;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static DriveTrain driveTrain = new DriveTrain(); 
-	public static Intake intake = new Intake(); 
-	public static Sorter Sorter = new Sorter ();
+	public static DriveTrain driveTrain;
+	public static Intake intake;
+	public static Sorter sorter;
+	
+	public static String selectedProfile = "ethan";
 	
 	public static OI m_oi; 	//This MUST be declared last
 	Command m_autonomousCommand;
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		driveTrain = new DriveTrain();
 		intake = new Intake(); 
+		sorter = new Sorter();
 		
 		m_oi = new OI();	//This MUST be declared last
 		

@@ -12,7 +12,7 @@ public class actualYeet extends Command {
     public actualYeet() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.Sorter);
+    	requires(Robot.sorter);
     }
     
     // Called just before this Command runs the first time
