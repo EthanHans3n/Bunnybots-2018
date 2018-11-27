@@ -7,10 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class actualUnYeet extends Command {  
-    public actualUnYeet() {
+public class leftUnYeet extends Command {
+
+    public leftUnYeet() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // eg. requires(chassis);o
     	requires(Robot.Sorter);
     }
 
@@ -20,7 +21,7 @@ public class actualUnYeet extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.Sorter.actualUnYeet();
+    	Robot.Sorter.leftUnYeet();
     }
 
     // Make this return true when this Command no longer needs to run execute()
