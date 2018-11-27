@@ -42,26 +42,23 @@ public class DriveTrain extends Subsystem {
 			arcadeTank = true;
 		}
 	}
-	public void Drive (Joystick joy) {
+	public void drive(Joystick joy) {
 		inputSpeed = -joy.getRawAxis(1);
 		inputTurn = joy.getRawAxis(5);
 		drive(inputSpeed, -inputTurn);
 	}
+	
 	public void drive(double left, double right) {
-//	if (Robot.driveType) {
-//	drive.arcadeDrive(left, right);
-//	} else { 
-//	}
+		if (arcadeTank) {
+			drive.arcadeDrive(left, right);
+		} else {
+			drive.tankDrive(left, right);
+		}
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-
-	public void drive(Joystick driveStick) {
-		// TODO Auto-generated method stub
-		
-	}
 }
 
