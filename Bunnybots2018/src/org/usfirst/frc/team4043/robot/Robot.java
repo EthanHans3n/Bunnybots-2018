@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4043.robot;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -29,7 +30,9 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Sorter sorter;
 	
-	public static String selectedProfile = "ethan";
+	public static String selectedProfile;
+	
+	Preferences prefs;
 	
 	public static OI m_oi; 	//This MUST be declared last
 	Command m_autonomousCommand;
@@ -41,12 +44,16 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
+		prefs = Preferences.getInstance();
+		selectedProfile = prefs.getString("DriverName", "ethan");
+		
 		driveTrain = new DriveTrain();
 		intake = new Intake(); 
 		sorter = new Sorter();
 		
 		m_oi = new OI();	//This MUST be declared last
 		
+		System.out.println(selectedProfile);
 	}
 
 	/**
@@ -109,6 +116,11 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		
+		prefs = Preferences.getInstance();
+		selectedProfile = prefs.getString("DriverName", "ethan");
+		
+		System.out.println(selectedProfile);
 	}
 
 	/**
