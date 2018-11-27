@@ -22,6 +22,19 @@ public class Sorter extends Subsystem {
 	
 	public void noYeet() {
 		RobotMap.yeetR.set(0);
+		RobotMap.yeetL.set(0);
+	}
+	public void rightYeet() {
+		RobotMap.yeetR.set(1);
+	}
+	public void rightUnYeet() {
+		RobotMap.yeetR.set(-1);
+	}
+	public void leftYeet() {
+		RobotMap.yeetL.set(1);
+	}
+	public void leftUnYeet() {
+		RobotMap.yeetL.set(-1);
 	}
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
