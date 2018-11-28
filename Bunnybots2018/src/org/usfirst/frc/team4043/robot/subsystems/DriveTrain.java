@@ -20,7 +20,7 @@ public class DriveTrain extends Subsystem {
 	//These get drawn in from the correct driver profile
 	double maxSpeed;
 	double maxTurn;
-	boolean arcadeTank;
+	boolean arcadeTank;	//arcade = true ; tank = false
 	String profileSelected = Robot.selectedProfile;
 	
 	public DriveTrain() {
@@ -40,11 +40,28 @@ public class DriveTrain extends Subsystem {
 			maxSpeed = 1.0;
 			maxTurn = 1.0;
 			arcadeTank = true;
+			break;
+		case "nick" :
+			maxSpeed = 1.0;
+			maxTurn = 1.0;
+			arcadeTank = true;
+			break;
+		case "meira" :
+			maxSpeed = .9;
+			maxTurn = maxSpeed;
+			arcadeTank = false;
+			break;
+		case "lucca" :
+			maxSpeed = .5;
+			maxTurn = .75;
+			arcadeTank = true;
+			break;
 		}
+			
 	}
 	public void drive(Joystick joy) {
-		inputSpeed = -joy.getRawAxis(1);
-		inputTurn = joy.getRawAxis(5);
+		inputSpeed = -joy.getRawAxis(1) * maxSpeed;
+		inputTurn = joy.getRawAxis(5) * maxTurn;
 		drive(inputSpeed, -inputTurn);
 	}
 	
