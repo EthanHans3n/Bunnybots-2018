@@ -30,10 +30,16 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static Intake intake;
 	public static Sorter sorter;
-	public static DigitalInput arduinoDIO;
-	boolean redBlue;
+	
+	public static DigitalInput arduinoDIOLeft;
+	public static DigitalInput arduinoDIORight;
+	
+	public static boolean ballColorLeft;
+	public static boolean ballColorRight;
 	
 	public static String selectedProfile;
+	
+	public static boolean teamColor;
 	
 	Preferences prefs;
 	
@@ -53,7 +59,8 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		intake = new Intake(); 
 		sorter = new Sorter();
-		arduinoDIO = new DigitalInput(0);
+		arduinoDIOLeft = new DigitalInput(0);
+		arduinoDIORight = new DigitalInput(1);
 		
 		m_oi = new OI();	//This MUST be declared last
 		
@@ -123,6 +130,7 @@ public class Robot extends TimedRobot {
 		
 		prefs = Preferences.getInstance();
 		selectedProfile = prefs.getString("DriverName", "ethan");
+		teamColor = prefs.getBoolean("ColorPicker", true);
 		
 		System.out.println(selectedProfile);
 	}
@@ -134,8 +142,22 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
-		redBlue = arduinoDIO.get();
-		System.out.println(redBlue);
+		ballColorLeft = arduinoDIOLeft.get();
+		ballColorRight = arduinoDIORight.get();
+		
+		if (teamColor) {				//If the wanted color is red
+			if (ballColorLeft){			//If the actual left color is red
+				sorter.leftUnYeet();	//Keep the left sorter going up
+			} else if (!ballColorLeft) {//If the actual left color is blue
+				sorter.leftYeet(); 		//yeet the left side
+			}
+			
+			if (ballColorRight){		//If the actual right color is red
+				sorter.rightUnYeet();	//Keep the right sorter going up
+			} else if (!ballColorRight) {//If the actual right color is blue
+				sorter.rightYeet(); 	//yeet the right side
+			}
+		}
 	}
 
 	/**
