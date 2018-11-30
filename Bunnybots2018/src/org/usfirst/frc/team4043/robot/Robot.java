@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team4043.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -29,6 +30,8 @@ public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static Intake intake;
 	public static Sorter sorter;
+	public static DigitalInput arduinoDIO;
+	boolean redBlue;
 	
 	public static String selectedProfile;
 	
@@ -50,6 +53,7 @@ public class Robot extends TimedRobot {
 		driveTrain = new DriveTrain();
 		intake = new Intake(); 
 		sorter = new Sorter();
+		arduinoDIO = new DigitalInput(0);
 		
 		m_oi = new OI();	//This MUST be declared last
 		
@@ -129,6 +133,9 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		redBlue = arduinoDIO.get();
+		System.out.println(redBlue);
 	}
 
 	/**
