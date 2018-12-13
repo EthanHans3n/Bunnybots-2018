@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  *
  */
 public class DriveTrain extends Subsystem {
-	public DifferentialDrive drive; 
+	public DifferentialDrive diffDrive; 
 	double inputSpeed;
 	double inputTurn; 
 	boolean flase = false;
@@ -25,7 +25,7 @@ public class DriveTrain extends Subsystem {
 	
 	public DriveTrain() {
 		super();
-		drive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
+		diffDrive = new DifferentialDrive(RobotMap.motorFL, RobotMap.motorFR);
 		RobotMap.motorBL.follow(RobotMap.motorFL);
 		RobotMap.motorBR.follow(RobotMap.motorFR);
 		
@@ -33,7 +33,7 @@ public class DriveTrain extends Subsystem {
 		RobotMap.motorFL.setSafetyEnabled(false);
 		RobotMap.motorBR.setSafetyEnabled(false);
 		RobotMap.motorBL.setSafetyEnabled(false);
-		drive.setSafetyEnabled(false);
+		diffDrive.setSafetyEnabled(false);
 		
 		switch (profileSelected) {
 		case "ethan" :
@@ -67,9 +67,9 @@ public class DriveTrain extends Subsystem {
 	
 	public void drive(double left, double right) {
 		if (arcadeTank) {
-			drive.arcadeDrive(left, right);
+			diffDrive.arcadeDrive(left, right);
 		} else {
-			drive.tankDrive(left, right);
+			diffDrive.tankDrive(left, right);
 		}
 	}
 	

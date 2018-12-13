@@ -97,22 +97,35 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
+		
+		RobotMap.motorBR.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
+		RobotMap.motorBL.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
+		RobotMap.motorBR.setSelectedSensorPosition(0, 0, 10);
+		RobotMap.motorBL.setSelectedSensorPosition(0, 0, 10);
+		
+		autoRoutineStraight();
+	}
+	
+	void autoRoutineStraight() {
+		/* for (i in 1..25) {
+		 * 	Drive forward 1 crate length
+		 * 	Dump ball in crate
+		 * }
+		 */
+		RobotMap.motorBR.setSelectedSensorPosition(0, 0, 10);
+		RobotMap.motorBL.setSelectedSensorPosition(0, 0, 10);
+		for (int i = 0; i < 25; i++) {
+			while(RobotMap.motorBR.getSelectedSensorPosition(0) < 159) {
+				driveTrain.diffDrive.arcadeDrive(.75, (RobotMap.motorBR.getSelectedSensorPosition(0) - RobotMap.motorBL.getSelectedSensorPosition(0))/100);
+			}
+			//Put code to dump ball here
+		}
 	}
 
-	/**
-	 * This function is called periodically during autonomous.
-	 */
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
