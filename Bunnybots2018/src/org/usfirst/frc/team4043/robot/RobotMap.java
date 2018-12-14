@@ -16,10 +16,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * floating around.
  */
 public class RobotMap {
-	public static WPI_TalonSRX motorFR = new WPI_TalonSRX(9);
-	public static WPI_TalonSRX motorBR = new WPI_TalonSRX(6);
-	public static  WPI_TalonSRX motorFL = new WPI_TalonSRX(7);
-	public static  WPI_TalonSRX motorBL = new WPI_TalonSRX(5);
+	public static WPI_TalonSRX motorFR = new WPI_TalonSRX(2);
+	public static WPI_TalonSRX motorBR = new WPI_TalonSRX(11);
+	public static  WPI_TalonSRX motorFL = new WPI_TalonSRX(13);
+	public static  WPI_TalonSRX motorBL = new WPI_TalonSRX(15);
 	
 	public static WPI_TalonSRX constantIntake = new WPI_TalonSRX(56);
 	public static WPI_TalonSRX yeetR = new WPI_TalonSRX(79);
