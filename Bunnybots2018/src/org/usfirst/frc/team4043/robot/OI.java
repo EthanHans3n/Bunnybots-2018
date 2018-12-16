@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team4043.robot;
 
+import org.usfirst.frc.team4043.robot.commands.IntakeDown;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -22,6 +24,10 @@ public class OI {
 	
 	public Button intakeUpButton = new JoystickButton(driveStick, 1);
 	public Button intakeDownButton = new JoystickButton(driveStick, 2);
+	
+	public OI() {
+		intakeDownButton.whileHeld(new IntakeDown());
+	}
 
 	public Joystick getDriveStick() {
 		return driveStick;
