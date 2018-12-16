@@ -7,7 +7,10 @@
 
 package org.usfirst.frc.team4043.robot;
 
+import org.usfirst.frc.team4043.robot.commands.DumpLeft;
+import org.usfirst.frc.team4043.robot.commands.DumpRight;
 import org.usfirst.frc.team4043.robot.commands.IntakeStop;
+import org.usfirst.frc.team4043.robot.commands.IntakeUpDown;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -25,9 +28,15 @@ public class OI {
 	public Button upDownButton = new JoystickButton(driveStick, 1);
 	public Button intakeStopButton = new JoystickButton(driveStick, 2);
 	
+	public Button leftDump = new JoystickButton(driveStick, 4);
+	public Button rightDump = new JoystickButton(driveStick, 5);
+	
 	public OI() {
+		upDownButton.whenPressed(new IntakeUpDown());
 		intakeStopButton.whenPressed(new IntakeStop());
 		
+		leftDump.toggleWhenPressed(new DumpLeft());
+		rightDump.toggleWhenPressed(new DumpRight());
 	}
 
 	public Joystick getDriveStick() {

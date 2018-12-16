@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import org.usfirst.frc.team4043.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4043.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4043.robot.subsystems.Hopper;
 import org.usfirst.frc.team4043.robot.subsystems.Intake;
-import org.usfirst.frc.team4043.robot.subsystems.Sorter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,7 +29,7 @@ import org.usfirst.frc.team4043.robot.subsystems.Sorter;
 public class Robot extends TimedRobot {
 	public static DriveTrain driveTrain;
 	public static Intake intake;
-	public static Sorter sorter;
+	public static Hopper hopper;
 	
 	public static DigitalInput arduinoDIOLeft;
 	public static DigitalInput arduinoDIORight;
@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
 		
 		driveTrain = new DriveTrain();
 		intake = new Intake(); 
-		sorter = new Sorter();
+		hopper = new Hopper();
 		arduinoDIOLeft = new DigitalInput(0);
 		arduinoDIORight = new DigitalInput(1);
 		
@@ -124,7 +124,10 @@ public class Robot extends TimedRobot {
 			while(RobotMap.motorBR.getSelectedSensorPosition(0) < 159) {
 				driveTrain.diffDrive.arcadeDrive(.75, (RobotMap.motorBR.getSelectedSensorPosition(0) - RobotMap.motorBL.getSelectedSensorPosition(0))/100);
 			}
-			//Put code to dump ball here
+			hopper.dumpLeft();
+			hopper.dumpRight();
+			hopper.closeLeft();
+			hopper.closeRight();
 		}
 	}
 
@@ -160,19 +163,19 @@ public class Robot extends TimedRobot {
 		ballColorLeft = arduinoDIOLeft.get();
 		ballColorRight = arduinoDIORight.get();
 		
-		if (teamColor) {				//If the wanted color is red
-			if (ballColorLeft){			//If the actual left color is red
-				sorter.leftUnYeet();	//Keep the left sorter going up
-			} else if (!ballColorLeft) {//If the actual left color is blue
-				sorter.leftYeet(); 		//yeet the left side
-			}
-			
-			if (ballColorRight){		//If the actual right color is red
-				sorter.rightUnYeet();	//Keep the right sorter going up
-			} else if (!ballColorRight) {//If the actual right color is blue
-				sorter.rightYeet(); 	//yeet the right side
-			}
-		}
+//		if (teamColor) {				//If the wanted color is red
+//			if (ballColorLeft){			//If the actual left color is red
+//				sorter.leftUnYeet();	//Keep the left sorter going up
+//			} else if (!ballColorLeft) {//If the actual left color is blue
+//				sorter.leftYeet(); 		//yeet the left side
+//			}
+//			
+//			if (ballColorRight){		//If the actual right color is red
+//				sorter.rightUnYeet();	//Keep the right sorter going up
+//			} else if (!ballColorRight) {//If the actual right color is blue
+//				sorter.rightYeet(); 	//yeet the right side
+//			}
+//		}
 	}
 
 	/**
