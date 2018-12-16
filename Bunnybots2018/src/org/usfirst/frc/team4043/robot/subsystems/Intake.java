@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4043.robot.subsystems;
 
 import org.usfirst.frc.team4043.robot.RobotMap;
-import org.usfirst.frc.team4043.robot.commands.IntakeUp;
+import org.usfirst.frc.team4043.robot.commands.IntakeUpDown;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -33,7 +33,7 @@ public class Intake extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 
-		setDefaultCommand(new IntakeUp());
+		setDefaultCommand(new IntakeUpDown());
 	}
 
 }

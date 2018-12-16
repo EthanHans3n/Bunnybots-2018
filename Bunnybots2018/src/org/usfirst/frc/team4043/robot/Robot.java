@@ -41,6 +41,8 @@ public class Robot extends TimedRobot {
 	
 	public static boolean teamColor;
 	
+	public static boolean upDown = true;
+	
 	Preferences prefs;
 	
 	public static OI m_oi; 	//This MUST be declared last
