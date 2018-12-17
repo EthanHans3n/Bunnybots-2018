@@ -23,8 +23,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-	public static Joystick driveStick = new Joystick(3);
-	public static Joystick coStick = new Joystick(5);
+	public static Joystick driveStick = new Joystick(0);
+	public static Joystick coStick = new Joystick(1);
 	
 	public Button upButton = new JoystickButton(driveStick, 1);
 	public Button downButton = new JoystickButton(driveStick, 3);
