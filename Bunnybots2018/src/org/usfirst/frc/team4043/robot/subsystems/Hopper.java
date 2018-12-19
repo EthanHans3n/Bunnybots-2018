@@ -7,10 +7,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
+
 public class Hopper extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	
+	boolean flase = false;
 	
 	public void dumpLeft() {
 		RobotMap.leftGate.set(true);

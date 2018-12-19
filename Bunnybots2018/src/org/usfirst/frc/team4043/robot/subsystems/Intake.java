@@ -12,14 +12,16 @@ public class Intake extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+	
+	double intakeSpeed = .95;
 	public void setIntakeSpeed(double speed) {
 		RobotMap.intakeLeft.set(speed);
 		RobotMap.intakeRight.set(speed * -1);
 	}
 
 	public void intakeUp() {
-		RobotMap.intakeLeft.set(1);
-		RobotMap.intakeRight.set(-1);
+		RobotMap.intakeLeft.set(-intakeSpeed);
+		RobotMap.intakeRight.set(intakeSpeed);
 	}
 	public void stopAll () {
 		RobotMap.intakeLeft.set(0);
@@ -27,8 +29,8 @@ public class Intake extends Subsystem {
 	}
 
 	public void intakeDown() {
-		RobotMap.intakeLeft.set(-1);
-		RobotMap.intakeRight.set(1);
+		RobotMap.intakeLeft.set(intakeSpeed);
+		RobotMap.intakeRight.set(-intakeSpeed);
 	}
 
 	public void initDefaultCommand() {

@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DumpLeft extends Command {
+public class StopDumpRight extends Command {
 
-    public DumpLeft() {
+    public StopDumpRight() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.hopper);
@@ -21,7 +21,7 @@ public class DumpLeft extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.hopper.dumpLeft();
+    	Robot.hopper.closeRight();
     }
 
     // Make this return true when this Command no longer needs to run execute()

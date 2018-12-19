@@ -12,6 +12,8 @@ import org.usfirst.frc.team4043.robot.commands.DumpRight;
 import org.usfirst.frc.team4043.robot.commands.IntakeDown;
 import org.usfirst.frc.team4043.robot.commands.IntakeStop;
 import org.usfirst.frc.team4043.robot.commands.IntakeUp;
+import org.usfirst.frc.team4043.robot.commands.StopDumpLeft;
+import org.usfirst.frc.team4043.robot.commands.StopDumpRight;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -26,12 +28,12 @@ public class OI {
 	public static Joystick driveStick = new Joystick(0);
 	public static Joystick coStick = new Joystick(1);
 	
-	public Button upButton = new JoystickButton(driveStick, 1);
-	public Button downButton = new JoystickButton(driveStick, 3);
+	public Button upButton = new JoystickButton(driveStick, 4);
+	public Button downButton = new JoystickButton(driveStick, 1);
 	public Button intakeStopButton = new JoystickButton(driveStick, 2);
 	
-	public Button leftDump = new JoystickButton(driveStick, 4);
-	public Button rightDump = new JoystickButton(driveStick, 5);
+	public Button leftDump = new JoystickButton(driveStick, 5);
+	public Button rightDump = new JoystickButton(driveStick, 6);
 	
 	public OI() {
 		upButton.whenPressed(new IntakeUp());
@@ -39,8 +41,10 @@ public class OI {
 		
 		intakeStopButton.whenPressed(new IntakeStop());
 		
-		leftDump.toggleWhenPressed(new DumpLeft());
-		rightDump.toggleWhenPressed(new DumpRight());
+		leftDump.whileHeld(new DumpLeft());
+		leftDump.whenReleased(new StopDumpLeft());
+		rightDump.whileHeld(new DumpRight());
+		rightDump.whenReleased(new StopDumpRight());
 	}
 
 	public Joystick getDriveStick() {
