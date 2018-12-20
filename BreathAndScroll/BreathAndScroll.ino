@@ -26,14 +26,14 @@ void loop() {
       rgbColour[decColour] -= 15;
       rgbColour[incColour] += 15;
 
-      for (int j = 0; j < 29; j++) {
+      for (int j = 3; j < 29; j++) {
         leds[j+1] = CRGB (rgbColour[0], rgbColour[1], rgbColour[2]);
         FastLED.show();
         leds[j] = CRGB(0,0,0);
         FastLED.show();
         delay(50);
       }
-      for (int m = 29; m >= 0; m--) {
+      for (int m = 29; m >= 3; m--) {
         leds[m] = CRGB (rgbColour[0], rgbColour[1], rgbColour[2]);
         FastLED.show();
         leds[m+1] = CRGB(0,0,0);
