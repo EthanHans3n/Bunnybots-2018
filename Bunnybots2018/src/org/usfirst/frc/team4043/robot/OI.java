@@ -12,6 +12,7 @@ import org.usfirst.frc.team4043.robot.commands.DumpRight;
 import org.usfirst.frc.team4043.robot.commands.IntakeDown;
 import org.usfirst.frc.team4043.robot.commands.IntakeStop;
 import org.usfirst.frc.team4043.robot.commands.IntakeUp;
+import org.usfirst.frc.team4043.robot.commands.SlowDown;
 import org.usfirst.frc.team4043.robot.commands.StopDumpLeft;
 import org.usfirst.frc.team4043.robot.commands.StopDumpRight;
 
@@ -31,13 +32,17 @@ public class OI {
 	public Button upButton = new JoystickButton(driveStick, 4);
 	public Button downButton = new JoystickButton(driveStick, 1);
 	public Button intakeStopButton = new JoystickButton(driveStick, 2);
+	public Button slowDownButton = new JoystickButton(driveStick, 3);
 	
 	public Button leftDump = new JoystickButton(driveStick, 5);
 	public Button rightDump = new JoystickButton(driveStick, 6);
 	
 	public OI() {
 		upButton.whenPressed(new IntakeUp());
+		upButton.whenReleased(new SlowDown());
+		
 		downButton.whenPressed(new IntakeDown());
+		downButton.whenReleased(new SlowDown());
 		
 		intakeStopButton.whenPressed(new IntakeStop());
 		
@@ -45,6 +50,8 @@ public class OI {
 		leftDump.whenReleased(new StopDumpLeft());
 		rightDump.whileHeld(new DumpRight());
 		rightDump.whenReleased(new StopDumpRight());
+		
+		slowDownButton.whenPressed(new SlowDown());
 	}
 
 	public Joystick getDriveStick() {
