@@ -35,7 +35,7 @@ public class Intake extends Subsystem {
 		RobotMap.intakeRight.set(-intakeSpeed);
 	}
 	public void slowDown() {
-		RobotMap.intakeLeft.set(.5);
+		RobotMap.intakeLeft.set(-.5);
 		RobotMap.intakeRight.set(-.5);
 	}
 
