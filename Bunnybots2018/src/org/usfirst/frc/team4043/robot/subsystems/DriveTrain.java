@@ -64,7 +64,7 @@ public class DriveTrain extends Subsystem {
 	public void drive(Joystick joy) {
 		inputSpeed = -joy.getRawAxis(1);// * maxSpeed;
 		inputTurn = joy.getRawAxis(4);// * maxTurn;
-		drive(inputSpeed, inputTurn);
+		drive(inputSpeed, inputTurn - .1);
 	}
 	
 	/*public void drive(double left, double right) {

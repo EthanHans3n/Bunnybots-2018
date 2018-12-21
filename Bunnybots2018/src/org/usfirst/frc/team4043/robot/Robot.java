@@ -192,6 +192,18 @@ public class Robot extends TimedRobot {
 //				sorter.rightYeet(); 	//yeet the right side
 //			}
 //		}
+		
+		if (OI.driveStick.getRawAxis(2) != 0){
+			intake.intakeDown();
+			upDown = true;
+		} else if (OI.driveStick.getRawAxis(3) != 0){
+			intake.intakeUp();
+			upDown = true;
+		} else if (upDown){
+			intake.slowDown();
+		} else {
+			intake.stopAll();
+		}
 	}
 
 	/**
