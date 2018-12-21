@@ -17,6 +17,7 @@ public class SlowDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intake.slowDown();
     }
 
     // Called repeatedly when this Command is scheduled to run

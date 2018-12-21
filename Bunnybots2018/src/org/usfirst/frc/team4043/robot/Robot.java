@@ -43,6 +43,8 @@ public class Robot extends TimedRobot {
 	
 	public static boolean upDown = true;
 	
+	public int distanceInTicks = 568;
+	
 	Preferences prefs;
 	
 	public static OI m_oi; 	//This MUST be declared last
@@ -67,6 +69,9 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();	//This MUST be declared last
 		
 		System.out.println(selectedProfile);
+		
+		RobotMap.motorBL.setSelectedSensorPosition(0, 0, 10);
+		RobotMap.motorBR.setSelectedSensorPosition(0, 0, 10);
 	}
 
 	/**
@@ -76,7 +81,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		RobotMap.motorBL.setSelectedSensorPosition(0, 0, 10);
+		RobotMap.motorBR.setSelectedSensorPosition(0, 0, 10);
 	}
        
 	@Override
@@ -108,8 +114,6 @@ public class Robot extends TimedRobot {
 		RobotMap.motorBL.configSelectedFeedbackSensor(com.ctre.phoenix.motorcontrol.FeedbackDevice.QuadEncoder, 0, 10);
 		RobotMap.motorBR.setSelectedSensorPosition(0, 0, 10);
 		RobotMap.motorBL.setSelectedSensorPosition(0, 0, 10);
-		
-		autoRoutineStraight();
 	}
 	
 	void autoRoutineStraight() {
@@ -118,22 +122,34 @@ public class Robot extends TimedRobot {
 		 * 	Dump ball in crate
 		 * }
 		 */
-		RobotMap.motorBR.setSelectedSensorPosition(0, 0, 10);
-		RobotMap.motorBL.setSelectedSensorPosition(0, 0, 10);
-		for (int i = 0; i < 25; i++) {
-			while(RobotMap.motorBR.getSelectedSensorPosition(0) < 159) {
-				driveTrain.diffDrive.arcadeDrive(.75, (RobotMap.motorBR.getSelectedSensorPosition(0) - RobotMap.motorBL.getSelectedSensorPosition(0))/100);
+		System.out.println("Starting autoRoutine");
+		for (int i = 1; i < 5; i++) {
+			System.out.println("Inside for loop");
+			while(RobotMap.motorBR.getSelectedSensorPosition(0) < distanceInTicks * i) {
+				System.out.println("Inside while loop");
+				double diff = (RobotMap.motorBR.getSelectedSensorPosition(0) + RobotMap.motorBL.getSelectedSensorPosition(0)) / 1000d;
+				driveTrain.diffDrive.arcadeDrive(.5, diff);
 			}
+			driveTrain.diffDrive.arcadeDrive(0, 0);
 			hopper.dumpLeft();
 			hopper.dumpRight();
+			System.out.println("Dump");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				System.out.println("INTERRUPTED");
+			}
 			hopper.closeLeft();
 			hopper.closeRight();
+			System.out.println("Close");
 		}
 	}
 
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
+		autoRoutineStraight();
 	}
 
 	@Override
@@ -183,5 +199,11 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		System.out.println("DIFF: " + (RobotMap.motorBR.getSelectedSensorPosition(0) + RobotMap.motorBL.getSelectedSensorPosition(0)) / 1000d);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			System.out.println("INTERRUPTED");
+		}
 	}
 }

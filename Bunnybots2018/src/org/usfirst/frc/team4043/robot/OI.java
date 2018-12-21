@@ -38,10 +38,10 @@ public class OI {
 	public Button rightDump = new JoystickButton(driveStick, 6);
 	
 	public OI() {
-		upButton.whenPressed(new IntakeUp());
+		upButton.whileHeld(new IntakeUp());
 		upButton.whenReleased(new SlowDown());
 		
-		downButton.whenPressed(new IntakeDown());
+		downButton.whileHeld(new IntakeDown());
 		downButton.whenReleased(new SlowDown());
 		
 		intakeStopButton.whenPressed(new IntakeStop());
