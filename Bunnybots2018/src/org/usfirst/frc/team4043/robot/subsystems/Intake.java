@@ -14,7 +14,7 @@ public class Intake extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	
-	double intakeSpeed = .95;
+	double intakeSpeed = 1;
 	
 	public void setIntakeSpeed(double speed) {
 		RobotMap.intakeLeft.set(speed);

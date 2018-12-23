@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
 	
 	public static boolean upDown = true;
 	
-	public int distanceInTicks = 568;
+	public int distanceInTicks = 568 * 8;
 	
 	Preferences prefs;
 	
@@ -123,25 +123,26 @@ public class Robot extends TimedRobot {
 		 * }
 		 */
 		System.out.println("Starting autoRoutine");
-		for (int i = 1; i < 5; i++) {
-			System.out.println("Inside for loop");
-			while(RobotMap.motorBR.getSelectedSensorPosition(0) < distanceInTicks * i) {
-				System.out.println("Inside while loop");
-				double diff = (RobotMap.motorBR.getSelectedSensorPosition(0) + RobotMap.motorBL.getSelectedSensorPosition(0)) / 1000d;
-				driveTrain.diffDrive.arcadeDrive(.5, diff);
-			}
+		for (int i = 1; i < 2; i++) {
 			driveTrain.diffDrive.arcadeDrive(0, 0);
+			//intake.intakeUp();
 			hopper.dumpLeft();
 			hopper.dumpRight();
 			System.out.println("Dump");
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				System.out.println("INTERRUPTED");
 			}
 			hopper.closeLeft();
 			hopper.closeRight();
 			System.out.println("Close");
+			System.out.println("Inside for loop");
+//			while(RobotMap.motorBR.getSelectedSensorPosition(0) < distanceInTicks * i) {
+//				System.out.println("Inside while loop");
+//				double diff = (RobotMap.motorBR.getSelectedSensorPosition(0) + RobotMap.motorBL.getSelectedSensorPosition(0)) / 300d;
+//				driveTrain.diffDrive.arcadeDrive(.5, diff);
+//			}
 		}
 	}
 
@@ -211,11 +212,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		System.out.println("DIFF: " + (RobotMap.motorBR.getSelectedSensorPosition(0) + RobotMap.motorBL.getSelectedSensorPosition(0)) / 1000d);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			System.out.println("INTERRUPTED");
-		}
+		System.out.println("L: " + RobotMap.motorBL.getSelectedSensorPosition(0));
+		System.out.println("R: " + RobotMap.motorBR.getSelectedSensorPosition(0));
 	}
 }
